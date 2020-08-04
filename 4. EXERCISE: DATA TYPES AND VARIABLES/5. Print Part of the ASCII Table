@@ -1,0 +1,6 @@
+starting_index = int(input())
+final_index = int(input())
+symbols = ""
+for chars in range(starting_index, final_index + 1):
+    symbols += chr(chars) + " "
+print(symbols)
