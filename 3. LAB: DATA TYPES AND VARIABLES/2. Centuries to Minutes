@@ -1,0 +1,9 @@
+import math
+
+century = int(input())
+years = century * 100
+days = math.floor(years * 365.2422)
+hours = days * 24
+minutes = hours * 60
+print(
+    f'{century}' + ' centuries = ' + f'{years}' + ' years = ' + f'{days}' + ' days = ' + f'{hours}' + ' hours = ' + f'{minutes}' + ' minutes')
