@@ -1,0 +1,7 @@
+key = int(input())
+lines = int(input())
+message = ''
+for i in range(lines):
+    newchar = input()
+    message += chr(ord(newchar) + key)
+print(message)
