@@ -1,0 +1,11 @@
+number = int(input())
+capacity = 255
+counter = 0
+for i in range(number):
+    water = int(input())
+    if capacity - water < 0:
+        print('Insufficient capacity!')
+    else:
+        counter += water
+        capacity -= water
+print(counter)
