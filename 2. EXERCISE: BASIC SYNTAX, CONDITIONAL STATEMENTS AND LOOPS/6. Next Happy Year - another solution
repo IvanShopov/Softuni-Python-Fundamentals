@@ -1,0 +1,20 @@
+year = int(input())
+year += 1
+while True:
+    is_unique = True
+    symbols = ""
+    year_as_string = str(year)
+    for char in range(0, len(year_as_string)):
+        if char == 0:
+            symbols += year_as_string[char]
+        else:
+            if year_as_string[char] in symbols:
+                is_unique = False
+                break
+            else:
+                symbols += year_as_string[char]
+    if is_unique:
+        print(year)
+        break
+    else:
+        year += 1
