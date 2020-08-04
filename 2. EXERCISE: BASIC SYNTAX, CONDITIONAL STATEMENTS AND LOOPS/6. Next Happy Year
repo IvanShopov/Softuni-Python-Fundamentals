@@ -1,0 +1,9 @@
+year = int(input())
+nextyear = year + 1
+while True:
+    unique = len(set(str(nextyear)))
+    if len(str(year)) == unique:
+        print(nextyear)
+        break
+    else:
+        nextyear += 1
