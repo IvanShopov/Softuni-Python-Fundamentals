@@ -1,0 +1,14 @@
+budget = float(input())
+one_kg_flour_price = float(input())
+one_pack_eggs_price = one_kg_flour_price * 0.75
+one_liter_milk_price = one_kg_flour_price * 1.25
+cozounac_price = one_pack_eggs_price + one_kg_flour_price + one_liter_milk_price / 4
+number_of_cozounacs = 0
+number_of_red_eggs = 0
+for cooking in range(1, int(budget // cozounac_price) + 1):
+    budget -= cozounac_price
+    number_of_cozounacs += 1
+    number_of_red_eggs += 3
+    if cooking % 3 == 0:
+        number_of_red_eggs -= number_of_cozounacs - 2
+print(f"You made {number_of_cozounacs} cozonacs! Now you have {number_of_red_eggs} eggs and {budget:.2f}BGN left.")
