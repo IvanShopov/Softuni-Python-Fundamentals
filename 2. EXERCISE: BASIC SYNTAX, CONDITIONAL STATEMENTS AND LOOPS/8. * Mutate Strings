@@ -1,0 +1,8 @@
+first_string = input()
+second_string = input()
+final_string=first_string
+for char in range(len(first_string)):
+    final_string = ""
+    if first_string[char] != second_string[char]:
+        final_string=second_string[:char]+second_string[char]+first_string[char+1:]
+        print(final_string)
