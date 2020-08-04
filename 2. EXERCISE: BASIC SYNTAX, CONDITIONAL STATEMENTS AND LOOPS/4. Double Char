@@ -1,0 +1,3 @@
+word=input()
+for char in word:
+    print(f"{char}"*2, end="")
