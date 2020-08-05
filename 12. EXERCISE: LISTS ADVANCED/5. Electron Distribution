@@ -1,0 +1,12 @@
+electrons = int(input())
+shell = 1
+distribution = []
+while electrons > 0:
+    maximum_electrons = 2 * (shell ** 2)
+    if electrons - maximum_electrons >= 0:
+        distribution.append(maximum_electrons)
+    else:
+        distribution.append(electrons)
+    electrons -= maximum_electrons
+    shell += 1
+print(distribution)
