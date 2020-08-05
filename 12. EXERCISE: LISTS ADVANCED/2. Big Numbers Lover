@@ -1,0 +1,6 @@
+numbers = input().split()
+numbers.sort(reverse=True)
+biggest_number = ""
+for number in numbers:
+    biggest_number += number
+print(biggest_number)
