@@ -1,0 +1,21 @@
+gifts = input().split()
+command = input()
+while command != "No Money":
+    command = command.split()
+    action = command[0]
+    gift = command[1]
+    if action == "OutOfStock":
+        for cleared in range(len(gifts)):
+            if gifts[cleared] == gift:
+                gifts[cleared] = "None"
+    elif action == "Required":
+        index = int(command[2])
+        if 0 <= index < len(gifts):
+            gifts[index] = gift
+    elif action == "JustInCase":
+        gifts[-1] = gift
+    command = input()
+for clearing in range(len(gifts) - 1, -1, -1):
+    if gifts[clearing] == "None":
+        gifts.pop(clearing)
+print(" ".join(gifts))
