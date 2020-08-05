@@ -1,0 +1,12 @@
+numbers = input().split(", ")
+counter = 0
+final_list = []
+zero = "0"
+counter = numbers.count("0")
+for k in range(len(numbers)):
+    if zero in numbers:
+        numbers.remove(zero)
+for i in range(counter):
+    numbers.append("0")
+final_list = [int(i) for i in numbers]
+print(final_list)
