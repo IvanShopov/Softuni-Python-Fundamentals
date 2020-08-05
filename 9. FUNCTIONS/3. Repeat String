@@ -1,0 +1,8 @@
+def multiplication(new_string, number):
+    new_string = new_string * number
+    return new_string
+
+
+new_string = input()
+number = int(input())
+print(multiplication(new_string, number))
