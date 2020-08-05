@@ -1,0 +1,18 @@
+messages = input().split()
+final_message = []
+for message in messages:
+    number = ""
+    for char in message:
+        if char.isdigit():
+            number += char
+        else:
+            break
+    number = int(number)
+    for char in message[::-1]:
+        if char.isdigit():
+            message = message.replace(char, "")
+    message = chr(number) + message
+    if len(message) > 2:
+        message = message[0] + message[-1] + message[2:-1] + message[1]
+    final_message.append(message)
+print(" ".join(final_message))
