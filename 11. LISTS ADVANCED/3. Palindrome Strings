@@ -1,0 +1,10 @@
+words=input().split()
+searched_palindrom=input()
+palindroms=[]
+counter=0
+for word in words:
+    if word=="".join(reversed(word)):
+        palindroms.append(word)
+counter=palindroms.count(searched_palindrom)
+print(palindroms)
+print(f"Found palindrome {counter} times")
