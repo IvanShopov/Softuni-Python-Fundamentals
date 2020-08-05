@@ -1,0 +1,16 @@
+def calculation(type_of_drink, quantity, sum):
+    if type_of_drink == "coffee":
+        sum = 1.50 * quantity
+    elif type_of_drink == "water":
+        sum = 1 * quantity
+    elif type_of_drink == "coke":
+        sum = 1.40 * quantity
+    elif type_of_drink == "snacks":
+        sum = 2 * quantity
+    return f"{sum:.2f}"
+
+
+type_of_drink = input()
+quantity = int(input())
+sum = 0
+print(calculation(type_of_drink, quantity, sum))
