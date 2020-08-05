@@ -1,0 +1,19 @@
+version = [int(s) for s in input().split(".")]
+next_version = ""
+isUpdated = False
+for number in range(len(version) - 1, -1, -1):
+    if number == 2:
+        version[number] += 1
+    if isUpdated and version[number] != 9:
+        version[number] += 1
+        isUpdated = False
+        continue
+    elif isUpdated and version[number] == 9:
+        version[number] = 0
+        isUpdated = True
+        continue
+    if version[number] > 9:
+        version[number] = 0
+        isUpdated = True
+version = [str(s) for s in version]
+print('.'.join(version))
