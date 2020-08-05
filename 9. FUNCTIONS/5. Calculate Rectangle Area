@@ -1,0 +1,9 @@
+def calculation(width, height, area):
+    area = width * height
+    return area
+
+
+width = int(input())
+height = int(input())
+area = 0
+print(calculation(width, height, area))
