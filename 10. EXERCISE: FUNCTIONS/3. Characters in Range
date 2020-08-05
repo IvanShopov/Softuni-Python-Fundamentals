@@ -1,0 +1,10 @@
+def find_the_symbols(first_symbol, second_symbol, middle):
+    for letter in range(ord(first_symbol) + 1, ord(second_symbol)):
+        middle += chr(letter) + " "
+    return middle
+
+
+first_symbol = input()
+second_symbol = input()
+middle = ""
+print(find_the_symbols(first_symbol, second_symbol, middle))
