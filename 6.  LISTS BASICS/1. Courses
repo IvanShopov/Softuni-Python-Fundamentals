@@ -1,0 +1,7 @@
+number_of_elements = int(input())
+word = ""
+list_of_words = []
+for words in range(number_of_elements):
+    word = input()
+    list_of_words.append(word)
+print(list_of_words)
