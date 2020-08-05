@@ -1,0 +1,7 @@
+strings = input().split(", ")
+even_numbers_indexes = []
+numbers = list(map(lambda x: int(x), strings))
+for index in range(len(numbers)):
+    if numbers[index] % 2 == 0:
+        even_numbers_indexes.append(index)
+print(even_numbers_indexes)
