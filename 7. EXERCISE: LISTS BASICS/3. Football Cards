@@ -1,0 +1,14 @@
+a_team = ["A-" + str(i) for i in range(1, 12)]
+b_team = ["B-" + str(i) for i in range(1, 12)]
+kicked_players = input().split()
+for player in kicked_players:
+    if len(a_team) >= 7 or len(b_team) >= 7:
+        if player in a_team:
+            a_team.remove(player)
+        elif player in b_team:
+            b_team.remove(player)
+    else:
+        break
+print(f'Team A - {len(a_team)}; Team B - {len(b_team)}')
+if len(a_team) < 7 or len(b_team) < 7:
+    print('Game was terminated')
