@@ -1,0 +1,5 @@
+tail = input()
+body = input()
+head = input()
+all_the_parts = [head, body, tail]
+print(all_the_parts)
