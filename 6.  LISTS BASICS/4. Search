@@ -1,0 +1,12 @@
+count_of_numbers = int(input())
+word = input()
+collected_sentences = []
+filtered_sentences = []
+for sentences in range(count_of_numbers):
+    sentence = input()
+    collected_sentences.append(sentence)
+for filtered_words in collected_sentences:
+    if word in filtered_words:
+        filtered_sentences.append(filtered_words)
+print(collected_sentences)
+print(filtered_sentences)
