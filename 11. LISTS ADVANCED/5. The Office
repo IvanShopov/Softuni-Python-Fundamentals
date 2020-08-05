@@ -1,0 +1,19 @@
+employees_happyness = list(map(lambda x: int(x),input().split()))
+happiness_improving_factor=int(input())
+improved_list=[int(x*happiness_improving_factor) for x in employees_happyness]
+happy_employees=[]
+sum_of_improved_employees=0
+counter_of_employee=0
+counter_of_happy_employees=0
+for i in improved_list:
+    sum_of_improved_employees+=i
+    counter_of_employee+=1
+middle_happiness=sum_of_improved_employees/counter_of_employee
+for k in improved_list:
+    if k>=middle_happiness:
+        happy_employees.append(k)
+        counter_of_happy_employees+=1
+if counter_of_happy_employees>=counter_of_employee//2:
+    print(f"Score: {counter_of_happy_employees}/{counter_of_employee}. Employees are happy!")
+else:
+    print(f"Score: {counter_of_happy_employees}/{counter_of_employee}. Employees are not happy!")
