@@ -1,0 +1,134 @@
+import sys
+
+
+def manipulation(numbers, command):
+    command = command.split()
+    if command[0] == "exchange":
+        return exchange(numbers, command)
+    elif command[0] == "max":
+        print(max(numbers, command))
+        return numbers
+    elif command[0] == "min":
+        print(min(numbers, command))
+        return numbers
+    elif command[0] == "first":
+        print(first(numbers, command))
+        return numbers
+    elif command[0] == "last":
+        print(last(numbers, command))
+        return numbers
+    else:
+        return numbers
+
+
+def exchange(numbers, command):
+    index = int(command[1])
+    if index >= len(numbers) or index < 0:
+        print("Invalid index")
+    else:
+        numbers = numbers[index + 1:] + numbers[:index + 1]
+    return numbers
+
+
+def max(numbers, command):
+    type_of_number = command[1]
+    found_at_index = 0
+    max_number = -sys.maxsize
+    if type_of_number == "even":
+        for index, maximum_number in enumerate(numbers):
+            if maximum_number % 2 == 0:
+                if maximum_number >= max_number:
+                    max_number = maximum_number
+                    found_at_index = index
+    elif type_of_number == "odd":
+        for index, maximum_number in enumerate(numbers):
+            if maximum_number % 2 != 0:
+                if maximum_number >= max_number:
+                    max_number = maximum_number
+                    found_at_index = index
+    if max_number == -sys.maxsize:
+        return "No matches"
+    else:
+        return found_at_index
+
+
+def min(numbers, command):
+    type_of_number = command[1]
+    found_at_index = 0
+    min_number = sys.maxsize
+    if type_of_number == "even":
+        for index, minimum_number in enumerate(numbers):
+            if minimum_number % 2 == 0:
+                if minimum_number <= min_number:
+                    min_number = minimum_number
+                    found_at_index = index
+    elif type_of_number == "odd":
+        for index, minimum_number in enumerate(numbers):
+            if minimum_number % 2 != 0:
+                if minimum_number <= min_number:
+                    min_number = minimum_number
+                    found_at_index = index
+    if min_number == sys.maxsize:
+        return "No matches"
+    else:
+        return found_at_index
+
+
+def first(numbers, command):
+    counter = int(command[1])
+    type_of_number = command[2]
+    found_numbers = []
+    if counter > len(numbers):
+        return "Invalid count"
+    elif counter <= 0:
+        return "[]"
+    else:
+        if type_of_number == "even":
+            for even_number in numbers:
+                if even_number % 2 == 0:
+                    found_numbers.append(even_number)
+                    counter -= 1
+                    if counter == 0:
+                        break
+        elif type_of_number == "odd":
+            for odd_number in numbers:
+                if odd_number % 2 != 0:
+                    found_numbers.append(odd_number)
+                    counter -= 1
+                    if counter == 0:
+                        break
+        return found_numbers
+
+
+def last(numbers, command):
+    counter = int(command[1])
+    type_of_number = command[2]
+    found_numbers = []
+    if counter > len(numbers):
+        return "Invalid count"
+    elif counter <= 0:
+        return "[]"
+    else:
+        if type_of_number == "even":
+            for even_number in range(len(numbers) - 1, -1, -1):
+                if numbers[even_number] % 2 == 0:
+                    found_numbers.append(numbers[even_number])
+                    counter -= 1
+                    if counter == 0:
+                        break
+        elif type_of_number == "odd":
+            for odd_number in range(len(numbers) - 1, -1, -1):
+                if numbers[odd_number] % 2 != 0:
+                    found_numbers.append(numbers[odd_number])
+                    counter -= 1
+                    if counter == 0:
+                        break
+        return found_numbers[::-1]
+
+
+numbers = [int(s) for s in input().split()]
+command = input()
+while command != "end":
+    numbers = manipulation(numbers, command)
+    command = input()
+print(numbers)
