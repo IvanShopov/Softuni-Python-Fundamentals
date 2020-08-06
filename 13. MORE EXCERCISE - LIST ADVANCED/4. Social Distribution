@@ -1,0 +1,21 @@
+wealths = [int(number) for number in input().split(", ")]
+minimum_wealth = int(input())
+sum_of_wealth = 0
+noEquals = False
+for wealth in wealths:
+    sum_of_wealth += wealth
+if sum_of_wealth < len(wealths) * minimum_wealth:
+    print(f"No equal distribution possible")
+    noEquals = True
+else:
+    start_index = 0
+    while start_index < len(wealths):
+        while wealths[start_index] < minimum_wealth:
+            difference = minimum_wealth - wealths[start_index]
+            max_wealth = max(wealths)
+            if max_wealth >= minimum_wealth + difference:
+                wealths[wealths.index(max_wealth)] -= difference
+                wealths[start_index] += difference
+        start_index += 1
+if not noEquals:
+    print(wealths)
