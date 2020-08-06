@@ -1,0 +1,52 @@
+*** MADE IN TEAM ***
+
+mr = int(input())
+matrix = []
+kate_pos = []
+moves = 1
+for i in range(mr):
+    row = [b for b in input()]
+    if 'k' in row:
+        kate_pos.append([i, row.index('k')])
+        row[row.index('k')] = str(1)
+    matrix.append(row)
+dimensions = len(matrix[0])
+
+
+def check_open(curr_loc, mat):
+    global moves
+    possible_pos = []
+    for b in curr_loc:
+        r, l = b
+        try:
+            if l-1<0 or r+1>=len(mat[r]):
+                return 'Out'
+            if mat[r - 1][l] == ' ':  # Check up
+                possible_pos.append([r - 1, l])
+            if mat[r + 1][l] == ' ':  # Check down
+                possible_pos.append([r + 1, l])
+            if mat[r][l - 1] == ' ':  # Check left
+                possible_pos.append([r, l - 1])
+            if mat[r][l + 1] == ' ':  # Check right
+                possible_pos.append([r, l + 1])
+        except IndexError:
+            return 'Out'
+    moves += 1
+    if possible_pos:
+        for b in possible_pos:
+            mat[b[0]][b[1]] = str(moves)
+        return possible_pos, mat
+    else:
+        return 'No way out'
+
+
+while True:
+    result = check_open(kate_pos, matrix)
+    if result == 'Out':
+        print(f'Kate got out in {moves} moves')
+        break
+    elif result == 'No way out':
+        print("Kate cannot get out")
+        break
+    else:
+        kate_pos, matrix = result
