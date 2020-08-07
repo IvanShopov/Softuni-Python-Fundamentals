@@ -1,0 +1,10 @@
+text = input()
+letters = {}
+for char in text:
+    if char != " ":
+        if char not in letters.keys():
+            letters[char] = 1
+        else:
+            letters[char] += 1
+for key, value in letters.items():
+    print(f"{key} -> {value}")
