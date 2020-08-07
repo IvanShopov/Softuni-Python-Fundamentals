@@ -1,0 +1,13 @@
+students = {}
+n = int(input())
+for i in range(n):
+    student = input()
+    result = float(input())
+    if student in students.keys():
+        students[student] = (students[student] + result) / 2
+    else:
+        students[student] = result
+students = dict(sorted(students.items(), key=lambda x: (-x[1])))
+for key, value in students.items():
+    if value >= 4.50:
+        print(f"{key} -> {value:.2f}")
