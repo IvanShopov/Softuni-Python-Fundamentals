@@ -1,0 +1,19 @@
+companies = {}
+command = input().split(" -> ")
+while command[0] != "End":
+    company = command[0]
+    id = command[1]
+    if company in companies.keys():
+        if id not in companies[company]:
+            companies[company].append(id)
+    else:
+        companies[company] = []
+        companies[company].append(id)
+    command = input().split(" -> ")
+companies = dict(sorted(companies.items(), key=lambda x: (x[0])))
+for value in companies.values():
+    value = sorted(value, key=lambda x: (value))
+for key in companies.keys():
+    print(f"{key}")
+    for value in companies[key]:
+        print(f"-- {value}")
