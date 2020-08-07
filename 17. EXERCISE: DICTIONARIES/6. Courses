@@ -1,0 +1,17 @@
+from collections import Counter
+
+courses = {}
+command = input().split(" : ")
+while command[0] != "end":
+    course = command[0]
+    student = command[1]
+    courses[student] = course
+    command = input().split(" : ")
+repetitions = Counter(courses.values())
+repetitions = dict(sorted(repetitions.items(), key=lambda x: (-x[1])))
+courses = dict(sorted(courses.items(), key=lambda x: (x[0])))
+for key, value in repetitions.items():
+    print(f"{key}: {value}")
+    for student in courses.keys():
+        if courses[student] == key:
+            print(f"-- {student}")
