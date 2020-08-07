@@ -1,0 +1,39 @@
+command = input().split()
+useful_items = {"motes": 0, "fragments": 0, "shards": 0}
+useless_items = {}
+obtained = False
+while True:
+    for i in range(0, len(command), 2):
+        value = int(command[i])
+        key = command[i + 1].lower()
+        if key == "motes" or key == "fragments" or key == "shards":
+            useful_items[key] += value
+        else:
+            if key not in useless_items:
+                useless_items[key] = value
+            else:
+                useless_items[key] += value
+        if useful_items["motes"] >= 250:
+            print("Dragonwrath obtained!")
+            useful_items["motes"] -= 250
+            obtained = True
+            break
+        elif useful_items["fragments"] >= 250:
+            print("Valanyr obtained!")
+            useful_items["fragments"] -= 250
+            obtained = True
+            break
+        elif useful_items["shards"] >= 250:
+            print("Shadowmourne obtained!")
+            useful_items["shards"] -= 250
+            obtained = True
+            break
+    if obtained:
+        break
+    command = input().split()
+sorted_dict = dict(sorted(useful_items.items(), key=lambda x: (-x[1], x[0])))
+for keys, value in sorted_dict.items():
+    print(f"{keys}: {value}")
+sorted_dict = dict(sorted(useless_items.items(), key=lambda x: x[0]))
+for keys, value in sorted_dict.items():
+    print(f"{keys}: {value}")
