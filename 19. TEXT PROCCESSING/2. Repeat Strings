@@ -1,0 +1,6 @@
+text = input().split()
+word = ""
+for k in text:
+    for l in range(len(k)):
+        word += k
+print(word)
