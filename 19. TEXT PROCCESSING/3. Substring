@@ -1,0 +1,5 @@
+second_string = input()
+first_string = input()
+while second_string in first_string:
+    first_string = first_string.replace(second_string, "")
+print(first_string)
