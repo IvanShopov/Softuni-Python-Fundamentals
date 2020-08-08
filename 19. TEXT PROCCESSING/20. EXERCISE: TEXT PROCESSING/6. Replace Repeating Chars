@@ -1,0 +1,15 @@
+text = input()
+filtered_letters = ""
+for char in range(len(text) - 1, -1, -1):
+    if char <= -len(text) - 1:
+        if text[char] != text[char - 1]:
+            filtered_letters += text[char]
+    else:
+        if len(filtered_letters) > 0:
+            if text[char] != filtered_letters[-1]:
+                filtered_letters += text[char]
+        else:
+            filtered_letters += text[char]
+filtered_letters = filtered_letters[::-1]
+
+print(filtered_letters)
