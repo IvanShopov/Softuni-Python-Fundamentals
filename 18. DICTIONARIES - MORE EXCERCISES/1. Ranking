@@ -1,0 +1,52 @@
+contest = {}
+users = {}
+command = input()
+
+while command != "end of contests":
+    command = command.split(":")
+    examine = command[0]
+    password = command[1]
+    if examine not in contest.keys():
+        contest[examine] = password
+    command = input()
+    if command == "end of contests":
+        break
+action = input()
+while action != "end of submissions":
+    action = action.split("=>")
+    examine = action[0]
+    password = action[1]
+    user = action[2]
+    value = int(action[3])
+    if examine in contest.keys():
+        if contest[examine] == password:
+            if user not in users.keys():
+                users[user] = [[examine, value]]
+            else:
+                isFound = False
+                for v in users[user]:
+                    if examine == v[0]:
+                        isFound = True
+                        if v[1] < value:
+                            v[1] = value
+                            break
+                if not isFound:
+                    users[user].append([examine, value])
+    action = input()
+best_student_points = 0
+best_student_name = ""
+for key, value in users.items():
+    sum = 0
+    for i in range(len(value)):
+        sum += value[i][1]
+    if sum > best_student_points:
+        best_student_points = sum
+        best_student_name = key
+print(f"Best candidate is {best_student_name} with total {best_student_points} points.")
+print("Ranking:")
+users = dict(sorted(users.items(), key=lambda x: (x[0])))
+for key, value in users.items():
+    print(key)
+    value = sorted(value, key=lambda x: -x[1])
+    for results in value:
+        print(f"#  {results[0]} -> {results[1]}")
