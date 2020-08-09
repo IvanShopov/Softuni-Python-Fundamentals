@@ -1,0 +1,13 @@
+# Problem link - https://judge.softuni.bg/Contests/Compete/DownloadResource/9902
+
+import re
+
+names = input()
+regex = r"[=]{1}[A-Z][A-Za-z]{2,}[=]|[\/]{1}[A-Z][A-Za-z]{2,}[\/]"
+matches = re.findall(regex, names)
+sum = 0
+for clearing in range(len(matches)):
+    matches[clearing] = matches[clearing][1:-1]
+    sum += len(matches[clearing])
+print(f"Destinations: {', '.join(matches)}")
+print(f"Travel Points: {sum}")
