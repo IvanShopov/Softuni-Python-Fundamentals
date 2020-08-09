@@ -1,44 +1,68 @@
 # Problem link - https://judge.softuni.bg/Contests/Compete/DownloadResource/9903
 
+def adding_plants(number,plants_rarity,plants_rating):
+    for plant in range(number):
+        new_plants = input().split("<->")
+        if new_plants[0] not in plants_rarity.keys():
+            plants_rarity[new_plants[0]] = int(new_plants[1])
+        else:
+            plants_rarity[new_plants[0]] = int(new_plants[1])
+        if new_plants[0] not in plants_rating.keys():
+            plants_rating[new_plants[0]] = []
+        else:
+            plants_rating[new_plants[0]] = []
+    return plants_rarity,plants_rating
+
+
+def rate(plants_name, plants_rating, plants_rarity):
+    rating = int(plants_for_changing[1])
+    if plants_name in plants_rating.keys():
+        plants_rating[plants_name].append(rating)
+    else:
+        print("error")
+    return plants_rating, plants_rarity
+
+
+def update(rarity, plants_name, plants_rarity):
+    if plants_name in plants_rarity.keys():
+        plants_rarity[plants_name] = rarity
+    else:
+        print("error")
+    return plants_rarity
+
+
+def reset(plants_name, plants_rating):
+    if plants_name in plants_rating.keys():
+        plants_rating[plants_name] = []
+    else:
+        print("error")
+
+
+def sorting(plants_rating, plants_rarity):
+    sorted_plants = []
+    for key, value in plants_rating.items():
+        sorted_plants.append([[key], [int(s) for s in value], plants_rarity[key]])
+    sorted_plants = list(reversed(sorted(sorted_plants, key=lambda x: (x[2], x[1]))))
+    return sorted_plants
+
+
 number = int(input())
 plants_rarity = {}
 plants_rating = {}
-for plant in range(number):
-    new_plants = input().split("<->")
-    if new_plants[0] not in plants_rarity.keys():
-        plants_rarity[new_plants[0]] = int(new_plants[1])
-    else:
-        plants_rarity[new_plants[0]] = int(new_plants[1])
-    if new_plants[0] not in plants_rating.keys():
-        plants_rating[new_plants[0]] = []
-    else:
-        plants_rating[new_plants[0]] = []
+adding_plants(number,plants_rarity,plants_rating)
 command = input().split(": ")
 while command[0] != "Exhibition":
     plants_for_changing = command[1].split(" - ")
     plants_name = plants_for_changing[0]
     if command[0] == "Rate":
-        rating = int(plants_for_changing[1])
-        if plants_name in plants_rating.keys():
-            plants_rating[plants_name].append(rating)
-        else:
-            print("error")
+        rate(plants_name, plants_rating, plants_rarity)
     elif command[0] == "Update":
         rarity = int(plants_for_changing[1])
-        if plants_name in plants_rarity.keys():
-            plants_rarity[plants_name] = rarity
-        else:
-            print("error")
+        update(rarity, plants_name, plants_rarity)
     elif command[0] == "Reset":
-        if plants_name in plants_rating.keys():
-            plants_rating[plants_name] = []
-        else:
-            print("error")
+        reset(plants_name, plants_rating)
     command = input().split(": ")
-sorted_plants = []
-for key, value in plants_rating.items():
-    sorted_plants.append([[key], [int(s) for s in value], plants_rarity[key]])
-sorted_plants = list(reversed(sorted(sorted_plants, key=lambda x: (x[2], x[1]))))
+sorted_plants = sorting(plants_rating, plants_rarity)
 print("Plants for the exhibition:")
 for items in sorted_plants:
     plant_name = items[0][0]
