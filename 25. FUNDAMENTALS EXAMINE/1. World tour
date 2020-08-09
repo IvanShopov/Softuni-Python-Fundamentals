@@ -1,0 +1,24 @@
+# Problem link - https://judge.softuni.bg/Contests/Compete/DownloadResource/9901
+
+stops = input()
+command = input().split(":")
+while command[0] != "Travel":
+    if command[0] == "Add Stop":
+        index = int(command[1])
+        string = command[2]
+        if 0 <= index < len(stops):
+            stops = stops[:index] + string + stops[index::]
+        print(stops)
+    elif command[0] == "Remove Stop":
+        start_index = int(command[1])
+        finish_index = int(command[2])
+        if 0 <= start_index < len(stops) and 0 <= finish_index < len(stops):
+            stops = stops[:start_index] + stops[finish_index + 1:]
+        print(stops)
+    elif command[0] == "Switch":
+        new_string = command[1]
+        old_string = command[2]
+        stops = stops.replace(new_string, old_string)
+        print(stops)
+    command = input().split(":")
+print(f"Ready for world tour! Planned stops: {stops}")
